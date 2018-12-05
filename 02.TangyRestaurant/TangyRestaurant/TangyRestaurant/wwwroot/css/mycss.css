@@ -1,0 +1,36 @@
+﻿
+/*We set the footer to be at the bottom*/
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #343A40;
+}
+
+/*Footer container*/
+footer > .cont {
+    padding: 15px;
+}
+
+footer > .cont > p:hover {
+    color: rgba(255, 255, 255, 0.75) !important;
+    cursor: pointer;
+}
+
+.form-border {
+    border: 1px solid #bbb9b9;
+    border-radius : 5px;
+    padding : 30px;
+}
+
+.custom-label {
+    display: block;
+    width: 100%;
+    height : 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4285;
+    color: #555;
+}
+

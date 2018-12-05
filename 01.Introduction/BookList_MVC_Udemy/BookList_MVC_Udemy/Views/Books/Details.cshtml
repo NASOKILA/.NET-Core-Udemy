@@ -1,0 +1,69 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+
+<h2>Book Details</h2>
+
+<hr />
+
+<fieldset>
+    <div class="row form-border">
+        <br />
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-1">
+                    <label asp-for="@Model.ISBN"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" asp-for="@Model.ISBN" disabled value="@Model.ISBN" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-1">
+                    <label asp-for="@Model.Title"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.Title" disabled value="@Model.Title" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-1">
+                    <label asp-for="@Model.Author"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.Author" disabled value="@Model.Author" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-1">
+                    <label asp-for="@Model.Avaliable"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.Avaliable" disabled value="@Model.Avaliable" type="checkbox" class="form-control"/>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-primary">Back <span class="glyphicon glyphicon-backward"></span></a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit <span class="glyphicon glyphicon-book"></span></a>
+        </div>
+    </div>
+</fieldset>

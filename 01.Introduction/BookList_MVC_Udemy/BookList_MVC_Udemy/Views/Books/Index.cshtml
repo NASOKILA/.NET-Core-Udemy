@@ -1,0 +1,46 @@
+﻿@model ICollection<Book>
+@{
+    //We have to secify what type of Model are we expecting to be psses to this view.
+    ViewData["Title"] = "Index";
+}
+
+<br />
+
+<h3>Books List</h3>
+
+<hr />
+
+<a asp-action="Create" class="btn btn-success">Create <span class="glyphicon glyphicon-plus"></span></a>
+
+<br />
+<br />
+
+<div class="form-border">
+
+    <br />
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Avaliability</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (Book book in Model)
+        {
+            <tr>
+                <td>@book.ISBN</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Avaliable</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning"><span class="glyphicon glyphicon-book"></span></a>
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,323 @@
+
+We will go over :
+	01.the bsics ov ASP .NET Core MVC
+	02.The FIle Sistem
+	03.Small Project with CRUD Operations
+	04.Big Resturant Project
+	05.Deployment with Azure
+	06.And More
+
+
+----------------------
+
+
+Topics :
+	Basics
+	Db Code First
+	Sessions
+	Custom Tag Helpers
+	View Components And Partial View
+	Bootstrap v4
+	Social Media Logins
+	Sending Emails from ASP .NET Core
+	Two Factor Authentication
+	Save Images on server and DB
+	Authentiction and Authorization	
+	Deploying in Azure, it's simple
+	Cascading drop downs and more.
+
+
+------------------------
+
+
+ASP History:
+
+	1996 - ASP
+	2002 - ASP.NET WebForm - quick sites
+	2008 - ASP.NET MVC - easy testing, open source
+	2016 - ASP.NET CORE - cloud based, works on onter operating systems
+		Has Dependency injection, NuGetPackages, Modules.
+		Unification between MVC and Web API, pipelines and mmiddlewares.
+		
+-------------------------
+
+
+Github:
+	We know it 
+
+
+-------------------------
+
+
+MVC :
+	Model - it's indipendent and rappresents data with propertirs
+	View - it's the UI, the front end with html css and tag helpers 
+	Controller - holds all the logic and communication from the user,
+		requests and more.
+	
+
+---------------------------
+
+
+Project One BookList :
+	When we select the new project we need to seect the 
+	Web Application MVC (Model View Controller)
+	No Authentiaton
+
+
+---------------------------
+
+
+FileStructure :
+	With right click on the project we can open the .csproj fil which is 
+	a main file holding all packages and info about the project.
+	
+	IT'S LIKE A package.json FILE IN JavaScript !!!!!
+	A metapackage already contains other pacakages in it.
+
+
+----------------------------
+
+
+The launchSettings.json file tells us what happens when we run our project !!!
+We can find it when we click on properties and then it shows up !!!!
+
+.NET Core Has a build in Web Server which runs our project !!!!!!
+
+
+-------------------------------
+
+
+The wwwroot folder:
+	Holds all the static files:
+	.js,
+	.css,
+	libraries,
+	images, 
+	and more
+
+
+--------------------------------
+
+
+Shared folder files :
+	Partial views.
+	In _viewStart file it's declared which file will be a Layout view.
+	The _ViewImports file declares all Tag helpers used
+	
+	The bundleConfig.json file configures all the buldling and minification of other files.
+	
+
+--------------------------------
+
+
+Main method:
+	Runs the app, calls the BuildWebHose method which configures the WebHost.
+	The StartUp.cs class is executed and it's configuring MVC services, 
+	web services, dependency injection, request handling and more.
+	
+
+---------------------------------
+
+
+Partial Views :
+	They have _ before they name.
+	They can be used multiple times, and receive parameters also.
+	One partia view can contain other partial views in it.
+
+	
+-----------------------------------
+
+
+IMPORTANT LESSON
+
+Requests Travel Path :
+	A request starts from the browser, Runs the IIS which runs .NET.
+	Then the Application starts and it
+	goes true a pipeline and then it reaches the server,
+	the request gets analised, a response is formed, it goes back thrue the pipeline and to 
+	the browser.
+		
+	Let's say the pipeline is a tupe !!!
+
+Middlewares:
+	A middleware is a proccess that is executed when the Request goest thrue the pipeline. 
+	
+	For example we can say that :
+		Authentication is a middleware, 
+		MVC is a middleware,
+		Static files have a middlewares,
+		and many more		
+
+	When the request travels thrue the pipeline it gets manipulated from all
+	these middlewares individually.
+	The same goes for the response.	 	
+
+
+Web Servers :
+	There are 2 web servers:
+		External : IIS, Apache, Linux ...
+		Internal : Kastrel - hosted by our App
+
+Kastrel :	
+	It's an Internal Server hosted by our app which can only execute a request,
+	There are others like it but Kastrel is most used by .NET Core.
+
+
+-------------------------------
+
+
+
+.NET MVC Routing :
+	The default routing users the file structure to map links.
+	
+Example:	
+	/Library/Books/2
+	/Controller/Action/Id?
+
+	If it doesn't find a route it returns 404 Not Found.
+	
+	It is set by default to look for the Home/Index file when we run the project but we cn change that vey easily.
+
+
+------------------------------
+
+
+Bootstrap grid system:
+	consists of 12 columns
+
+	it can be split into 3 or 4 columns.
+	
+	Bootstrap has 4 types of sizes:
+	sm - small,  - tableds and small devices
+	md - medium,  -  up to 700px 
+ 	lg - large  - websites 
+	ex - extrasmall  -  for cellphones
+
+
+	We can have:
+		3                  6                  3
+	
+
+------------------------
+
+
+IActionResult :	
+	An action is a method in the controller which returns an IActionResult.	
+	A controller method could return void, string or menay deferent things.
+	
+
+	We have many result types and helper methods. 
+
+
+-------------------
+
+
+Async vs Sync Methods:
+	
+	In Synchronous programming everithing is executed line by line.
+	Here a methods has to wait for another method to finish before it starts.
+
+
+	In Asynchronous programming we can move to another task before it finishes.
+	We don't have to wait for other methods to finish before we start our method.
+	In .NET we use async and await keywords with a Task<> function.
+
+	The Async operations are not faster but they are more efficient because they 
+	run together and that saves time.
+	
+
+----------------------
+
+
+Tag Helpers :
+	They are new to .NET Core.
+	Microsoft copied from frameworks like Angular and ReactJS, they have
+	directives.
+		
+	They differ from HTML Helpers.
+
+
+	Tag Helper Example:
+		<label class="form-control" asp-for="FirstName"></label>
+
+
+	Html Helper Eaxmple:
+		@Html.Label("FirstName", "FirstName : ", new { @class = "form-control"})
+	
+	
+	We created a label by using Tag Helper and then a Html Helper.
+	The reult is the same.
+
+	THE TAG HELPERS ARE MORE FRENDLY BECAUSE THEY LOOK LIKE ACTUAL HTML WITH SOME asp-... INFO IN THEM !!!
+
+	WE CAN USE BOTH WAYS TO CREATE ANY HTML ELEMENT AND PASS EVERITHING WE WANT TO IT !!!
+	
+	In the _ViewImport.cshtml file we declare all our Tag Helpers and then they can be used by
+	all the views in our app.
+
+	The _ViewImports.cshtml and _ViewStart.cshtml files affect all views in our app.
+
+
+--------------------------
+
+
+We can add the connection string from our DbContext class or from the ConfigureServices method in our Startup.cs class
+
+When using Code Fires approach for working with Databases we need to use Migrations 
+add-migration MigrationName
+update-database
+
+
+
+Startup File :
+		
+       public void ConfigureServices(IServiceCollection services)
+        {
+
+            services.AddDbContext<BookListDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString("BookListConnection")
+            ));
+        	
+	    . . .
+	}
+
+
+appsetting.json file:
+{
+  "ConnectionStrings": {
+    "BookListConnection": "Server=DESKTOP-IFI87J1; Database=BookList_MVC_Udemy; Trusted_Connection=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+
+
+---------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
